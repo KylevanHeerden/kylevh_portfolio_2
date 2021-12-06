@@ -1,6 +1,7 @@
 <template>
   <v-app>
-    <v-app-bar app dark flat color="background"> </v-app-bar>
+    <v-app-bar v-if="$route.name !== 'Home'" app dark flat color="background">
+    </v-app-bar>
 
     <v-main>
       <vue-page-transition name="fade">

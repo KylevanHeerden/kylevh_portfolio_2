@@ -71,7 +71,7 @@ export default Vue.extend({
         .append("svg:image")
         .attr(
           "xlink:href",
-          "https://raw.githubusercontent.com/KylevanHeerden/kylevh_portfolio_2/9431b4d0bc0302f8f7a174f7a00b87f3f5c7b6c0/src/assets/mouse-outline.svg"
+          "https://raw.githubusercontent.com/KylevanHeerden/kylevh_portfolio_2/e1553a7aee8bc082b7004cc7bc31276720471fc9/src/assets/mouse-outline.svg"
         )
         .attr("width", 30)
         .attr("height", 30)
@@ -81,13 +81,6 @@ export default Vue.extend({
       img2.on("click", () => {
         this.enterFn();
       });
-
-      // var img2_circle = img2
-      //   .append("circle")
-      //   .attr("cx", widthMarker)
-      //   .attr("cy", widthMarker)
-      //   .attr("r", "10px")
-      //   .style("fill", "red");
 
       const node = svg
         .append("g")
