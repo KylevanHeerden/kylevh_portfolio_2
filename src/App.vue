@@ -3,7 +3,9 @@
     <v-app-bar app dark flat color="background"> </v-app-bar>
 
     <v-main>
-      <router-view />
+      <vue-page-transition name="fade">
+        <router-view />
+      </vue-page-transition>
     </v-main>
   </v-app>
 </template>
