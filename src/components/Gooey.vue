@@ -71,30 +71,23 @@ export default Vue.extend({
         .append("svg:image")
         .attr(
           "xlink:href",
-          "https://raw.githubusercontent.com/KylevanHeerden/kylevh_portfolio_2/9070544db6a7ba2f19ade4cf123dae8ce1732576/src/assets/mouse-outline.svg"
+          "https://raw.githubusercontent.com/KylevanHeerden/kylevh_portfolio_2/9431b4d0bc0302f8f7a174f7a00b87f3f5c7b6c0/src/assets/mouse-outline.svg"
         )
         .attr("width", 30)
-        .attr("height", 30);
+        .attr("height", 30)
+        .attr("x", widthMarker / 2.3)
+        .attr("y", widthMarker / 1.3);
 
-      //   var text = imgContainer
-      //     .append("svg:image")
-      //     .attr("dy", widthMarker - 70)
-      //     .attr("fill", "white")
-      //     .text("enter");
+      img2.on("click", () => {
+        this.enterFn();
+      });
 
-      //   text.attr("dx", (widthMarker - text.node().getComputedTextLength()) / 2);
-
-      //   text.on("mouseover", () => {
-      //     text.attr("fill", "grey");
-      //   });
-
-      //   text.on("mouseout", () => {
-      //     text.attr("fill", "white");
-      //   });
-
-      //   text.on("click", () => {
-      //     this.enterFn();
-      //   });
+      // var img2_circle = img2
+      //   .append("circle")
+      //   .attr("cx", widthMarker)
+      //   .attr("cy", widthMarker)
+      //   .attr("r", "10px")
+      //   .style("fill", "red");
 
       const node = svg
         .append("g")
