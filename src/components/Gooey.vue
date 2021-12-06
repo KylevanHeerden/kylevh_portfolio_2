@@ -71,7 +71,7 @@ export default Vue.extend({
         .append("svg:image")
         .attr(
           "xlink:href",
-          "https://raw.githubusercontent.com/KylevanHeerden/kylevh_portfolio_2/82609822692bc73810c6430187b8c4a5d9331b11/src/assets/mouse_white.svg"
+          "https://raw.githubusercontent.com/KylevanHeerden/kylevh_portfolio_2/9070544db6a7ba2f19ade4cf123dae8ce1732576/src/assets/mouse-outline.svg"
         )
         .attr("width", 30)
         .attr("height", 30);
