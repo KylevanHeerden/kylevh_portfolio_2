@@ -40,25 +40,28 @@ export default Vue.extend({
         .attr("height", height);
       // .style("background-color", "green");
 
-      var widthMarker = 20;
+      var widthMarker = 250;
 
       var imgContainer = svg
         .append("g")
-        .attr("transform", `translate(${width / 2}, ${height / 2})`);
+        .attr("transform", `translate(${width / 2 - 125}, ${height / 3})`);
 
       var img = imgContainer
         .append("svg:image")
-        .attr("xlink:href", "src/assets/kyle_signature.png")
+        .attr(
+          "xlink:href",
+          "https://github.com/KylevanHeerden/kylevh_portfolio_2/blob/main/src/assets/kyle_signature.png?raw=true"
+        )
         .attr("width", widthMarker)
         .attr("height", widthMarker);
 
       var rect = imgContainer
         .append("rect")
-        .attr("width", widthMarker * 2)
-        .attr("height", widthMarker * 2)
-        .style("fill", "transparent")
-        .style("stroke", "white")
-        .style("stroke-width", "2px");
+        .attr("width", widthMarker)
+        .attr("height", widthMarker)
+        .style("fill", "transparent");
+      // .style("stroke", "white")
+      // .style("stroke-width", "2px");
 
       rect.on("click", () => {
         this.enterFn();
@@ -66,11 +69,23 @@ export default Vue.extend({
 
       var text = imgContainer
         .append("svg:text")
-        .attr("dy", widthMarker + 30)
+        .attr("dy", widthMarker - 70)
         .attr("fill", "white")
-        .text("welcome");
+        .text("enter");
 
       text.attr("dx", (widthMarker - text.node().getComputedTextLength()) / 2);
+
+      text.on("mouseover", () => {
+        text.attr("fill", "grey");
+      });
+
+      text.on("mouseout", () => {
+        text.attr("fill", "white");
+      });
+
+      text.on("click", () => {
+        this.enterFn();
+      });
 
       const node = svg
         .append("g")
