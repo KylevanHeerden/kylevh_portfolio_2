@@ -44,7 +44,7 @@ export default Vue.extend({
 
       var imgContainer = svg
         .append("g")
-        .attr("transform", `translate(${width / 2 - 125}, ${height / 3})`);
+        .attr("transform", `translate(${width / 2 - 125}, ${height / 3.5})`);
 
       var img = imgContainer
         .append("svg:image")
@@ -71,7 +71,7 @@ export default Vue.extend({
         .append("svg:image")
         .attr(
           "xlink:href",
-          "https://raw.githubusercontent.com/KylevanHeerden/kylevh_portfolio_2/e1553a7aee8bc082b7004cc7bc31276720471fc9/src/assets/mouse-outline.svg"
+          "https://raw.githubusercontent.com/KylevanHeerden/kylevh_portfolio_2/b5cc0d4e5fbef0b9241b0d726aa7fb9e6dbea18b/src/assets/mouse-outline.svg"
         )
         .attr("width", 30)
         .attr("height", 30)
@@ -80,6 +80,26 @@ export default Vue.extend({
 
       img2.on("click", () => {
         this.enterFn();
+      });
+
+      var text = imgContainer
+        .append("svg:text")
+        .attr("dy", widthMarker / 2 + 125)
+        .attr("fill", "black")
+        .attr("font-weight", function (d, i) {
+          return i * 100 + 100;
+        })
+        .attr("font-size", "12px")
+        .text("Click To Enter");
+
+      text.attr("dx", (widthMarker - text.node().getComputedTextLength()) / 2);
+
+      img2.on("mouseover", () => {
+        text.attr("fill", "white");
+      });
+
+      img2.on("mouseout", () => {
+        text.attr("fill", "black");
       });
 
       const node = svg
@@ -120,12 +140,17 @@ export default Vue.extend({
       }
 
       svg.on("pointermove touchmove", pointed);
+      svg.on("mouseout", exited);
 
       function pointed(event) {
         event.preventDefault();
         const [x, y] = d3.pointer(event);
         nodes[0].fx = x + 30;
         nodes[0].fy = y + 30;
+      }
+
+      function exited(event) {
+        simulation.restart();
       }
 
       ///////////////////////////////////////////////////////////////////////////

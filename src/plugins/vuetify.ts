@@ -15,7 +15,7 @@ export default new Vuetify({
       dark: {
         primary: "#35363A",
         secondary: colors.deepOrange,
-        background: "#202124",
+        background: "black",
         text: colors.grey,
       },
     },
