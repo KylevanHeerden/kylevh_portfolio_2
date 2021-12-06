@@ -67,25 +67,34 @@ export default Vue.extend({
         this.enterFn();
       });
 
-      var text = imgContainer
-        .append("svg:text")
-        .attr("dy", widthMarker - 70)
-        .attr("fill", "white")
-        .text("enter");
+      var img2 = imgContainer
+        .append("svg:image")
+        .attr(
+          "xlink:href",
+          "https://raw.githubusercontent.com/KylevanHeerden/kylevh_portfolio_2/82609822692bc73810c6430187b8c4a5d9331b11/src/assets/mouse_white.svg"
+        )
+        .attr("width", 30)
+        .attr("height", 30);
 
-      text.attr("dx", (widthMarker - text.node().getComputedTextLength()) / 2);
+      //   var text = imgContainer
+      //     .append("svg:image")
+      //     .attr("dy", widthMarker - 70)
+      //     .attr("fill", "white")
+      //     .text("enter");
 
-      text.on("mouseover", () => {
-        text.attr("fill", "grey");
-      });
+      //   text.attr("dx", (widthMarker - text.node().getComputedTextLength()) / 2);
 
-      text.on("mouseout", () => {
-        text.attr("fill", "white");
-      });
+      //   text.on("mouseover", () => {
+      //     text.attr("fill", "grey");
+      //   });
 
-      text.on("click", () => {
-        this.enterFn();
-      });
+      //   text.on("mouseout", () => {
+      //     text.attr("fill", "white");
+      //   });
+
+      //   text.on("click", () => {
+      //     this.enterFn();
+      //   });
 
       const node = svg
         .append("g")
