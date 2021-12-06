@@ -5,6 +5,8 @@
 <script lang="ts">
 import Vue from "vue";
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-ignore
 import * as d3 from "d3";
 import router from "@/router";
 
@@ -20,7 +22,7 @@ export default Vue.extend({
 
       var n = 50;
 
-      var nodes = d3.range(n).map(function (i) {
+      var nodes = d3.range(n).map(function (i: number) {
         return {
           r: i === 0 ? 0 : 2 * (4 + 9 * Math.random() ** 2),
           color: i === 0 ? "#202124" : "white",
@@ -85,10 +87,13 @@ export default Vue.extend({
       var text = imgContainer
         .append("svg:text")
         .attr("dy", widthMarker / 2 + 125)
-        .attr("fill", "black")
-        .attr("font-weight", function (d, i) {
-          return i * 100 + 100;
-        })
+        .attr("fill", "#212121")
+        .attr(
+          "font-weight",
+          function (d: Record<string, string | number>, i: number) {
+            return i * 100 + 100;
+          }
+        )
         .attr("font-size", "12px")
         .text("Click To Enter");
 
@@ -99,7 +104,7 @@ export default Vue.extend({
       });
 
       img2.on("mouseout", () => {
-        text.attr("fill", "black");
+        text.attr("fill", "#212121");
       });
 
       const node = svg
@@ -107,8 +112,8 @@ export default Vue.extend({
         .selectAll("circle")
         .data(nodes)
         .join("circle")
-        .attr("r", (d) => d.r)
-        .attr("fill", (d) => d.color);
+        .attr("r", (d: Record<string, string | number>) => d.r)
+        .attr("fill", (d: Record<string, string | number>) => d.color);
 
       const simulation = d3
         .forceSimulation(nodes)
@@ -120,12 +125,16 @@ export default Vue.extend({
           "collide",
           d3
             .forceCollide()
-            .radius((d) => d.r + 1)
+            .radius((d: Record<string, string | number>) => (d.r as number) + 1)
             .iterations(3)
         )
         .force(
           "charge",
-          d3.forceManyBody().strength((d, i) => (i ? 0 : -width / 3))
+          d3
+            .forceManyBody()
+            .strength((d: Record<string, string | number>, i: number) =>
+              i ? 0 : -width / 3
+            )
         )
         .on("tick", tick);
 
@@ -142,14 +151,14 @@ export default Vue.extend({
       svg.on("pointermove touchmove", pointed);
       svg.on("mouseout", exited);
 
-      function pointed(event) {
+      function pointed(event: any) {
         event.preventDefault();
         const [x, y] = d3.pointer(event);
         nodes[0].fx = x + 30;
         nodes[0].fy = y + 30;
       }
 
-      function exited(event) {
+      function exited(event: any) {
         simulation.restart();
       }
 
@@ -199,7 +208,7 @@ export default Vue.extend({
         .data(nodes.slice(1))
         .enter()
         .append("circle")
-        .attr("r", function (d) {
+        .attr("r", function (d: Record<string, string | number>) {
           return d.r;
         })
         .style("fill", "white");
@@ -207,10 +216,10 @@ export default Vue.extend({
       function tick() {
         svg
           .selectAll("circle")
-          .attr("cx", function (d) {
+          .attr("cx", function (d: Record<string, string | number>) {
             return d.x;
           })
-          .attr("cy", function (d) {
+          .attr("cy", function (d: Record<string, string | number>) {
             return d.y;
           });
       }
