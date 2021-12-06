@@ -50,7 +50,7 @@ export default Vue.extend({
         .append("svg:image")
         .attr(
           "xlink:href",
-          "https://github.com/KylevanHeerden/kylevh_portfolio_2/blob/main/src/assets/kyle_signature.png?raw=true"
+          "https://github.com/KylevanHeerden/kylevh_portfolio_2/blob/main/src/assets/kyle_signature2.svg?raw=true"
         )
         .attr("width", widthMarker)
         .attr("height", widthMarker);
